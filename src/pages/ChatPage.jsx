@@ -12,7 +12,7 @@ class ChatPage extends Component {
           <Container fluid className="d-flex flex-column flex-grow-1">
             <Row className="flex-grow-1">
               <Col lg="10">Mensagens</Col>
-              <Col>Usuários</Col>
+              <Col className="usuarios-bg">Usuários</Col>
             </Row>
             <Row>
               <Col>#hashTags</Col>
