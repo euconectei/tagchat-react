@@ -1,7 +1,30 @@
-import React, {Component} from 'react';
-import {Card, Form, Button} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Card, Form, Button } from 'react-bootstrap';
+import Auth from '../../api/auth';
+import Room from '../../api/room';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      password: '123456',
+      username: 'euconectei',
+    };
+
+    this.onLogin = this.onLogin.bind(this);
+  }
+  onLogin() {
+    console.log('onLogin');
+    const {
+      password,
+      username,
+    } = this.state;
+
+    Auth.login(username, password);
+    Room.create();
+
+  }
   render() {
     return (
       <Card>
@@ -18,8 +41,8 @@ class Login extends Component {
             </Form.Group>
             <Button
               variant="primary"
-              type="submit"
-              onClick={() => this.props.history.push('/chat')}>
+              type="button"
+              onClick={() => this.onLogin()}>
               Entrar
             </Button>
           </Form>
