@@ -14,19 +14,22 @@ class ChatPage extends Component {
           author: {
             name: 'euconectei'
           },
-          text: 'Olá a tds!'
+          text: 'Olá a tds!',
+          tagId: [1],
         },
         {
           author: {
             name: 'Pimentel'
           },
-          text: 'Olá!'
+          text: 'Olá!',
+          tagId: [1],
         },
         {
           author: {
             name: 'Rafael'
           },
-          text: 'estou fazendo um #teste'
+          text: 'Olá! estou fazendo um #teste',
+          tagId: [1, 2],
         },
       ],
       tags: [
@@ -38,7 +41,7 @@ class ChatPage extends Component {
         },
         {
           name: '#teste',
-          id: 1,
+          id: 2,
           slug: 'teste',
           organic: true,
         },
