@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Navbar, Row, Col } from 'react-bootstrap';
 import { UserList } from '../components/user';
-import { MessageList } from '../components/message';
+import { MessageList, MessageForm } from '../components/message';
 import { TagList } from '../components/tag';
+import { SERVER } from '../configs/const';
 
 class ChatPage extends Component {
   constructor(props) {
@@ -53,6 +54,7 @@ class ChatPage extends Component {
       ],
     }
   }
+
   render() {
     const {
       messages,
@@ -71,21 +73,29 @@ class ChatPage extends Component {
               <Col lg="10" className="d-flex flex-column flex-grow-1">
                 <Row className="flex-grow-1">
                   <Col>
-                    <MessageList messages={messages} />
+                    <MessageList messages={messages} tags={tags} />
                   </Col>
                 </Row>
-                <Row>
+              </Col>
+              <Col className="d-flex flex-column flex-grow-1 usuarios-bg">
+                <Row className="flex-grow-1">
                   <Col>
+                    <h2>Usuarios</h2>
+                    <UserList users={users} />
+                  </Col>
+                </Row>
+                <Row className="flex-grow-1">
+                  <Col>
+                    <h2>Tags</h2>
                     <TagList tags={tags} />
                   </Col>
                 </Row>
               </Col>
-              <Col className="usuarios-bg">
-                <UserList users={users} />
-              </Col>
             </Row>
             <Row>
-              <Col>Envia Mensagem</Col>
+              <Col className="p-2">
+                <MessageForm />
+              </Col>
             </Row>
           </Container>
         </div>

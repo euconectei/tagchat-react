@@ -1,11 +1,11 @@
 import React from 'react';
 import Message from './message';
 
-const elemMessages = (messages) => messages.map(message => <Message message={message} />);
+const elemMessages = (messages, tags) => messages.map(message => <Message message={message} tags={tags} />);
 
-const MessageList = ({ messages }) => (
+const MessageList = ({ messages, tags }) => (
   <>
-    {elemMessages(messages)}
+    {elemMessages(messages, tags)}
   </>
 );
 

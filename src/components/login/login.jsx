@@ -14,6 +14,7 @@ class Login extends Component {
 
     this.onLogin = this.onLogin.bind(this);
   }
+
   onLogin() {
     console.log('onLogin');
     const {
@@ -22,9 +23,10 @@ class Login extends Component {
     } = this.state;
 
     Auth.login(username, password);
-    Room.create();
+    // Room.create();
 
   }
+
   render() {
     return (
       <Card>
@@ -33,11 +35,11 @@ class Login extends Component {
           <Form>
             <Form.Group>
               <Form.Label>Usuário</Form.Label>
-              <Form.Control type="text" placeholder="usuario" />
+              <Form.Control type="text" id="usuario" placeholder="usuario" onChange={(event) => this.setState({ username: event.target.value })} />
             </Form.Group>
             <Form.Group>
               <Form.Label>Senha</Form.Label>
-              <Form.Control type="password" placeholder="senha" />
+              <Form.Control type="password" id="senha" placeholder="senha" onChange={(event) => this.setState({ senha: event.target.value })} />
             </Form.Group>
             <Button
               variant="primary"

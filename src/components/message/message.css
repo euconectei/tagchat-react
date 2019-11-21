@@ -1,0 +1,8 @@
+.message-box {
+  display: flex;
+  padding: 5px;
+}
+
+.message-tags {
+  margin-left: 5px;
+}

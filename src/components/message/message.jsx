@@ -1,12 +1,42 @@
 import React from 'react';
 import { User } from '../user';
+import { Tag } from '../tag';
 
-const listaTag = (tagId, tags) => tagId.map(id => tags.find(tag => id === tag.id));
+import "./message.css";
 
-const Message = ({ message, tags }) => (<div><User user={message.author} />: {message.text}
-  <div className="message-tag">
-    {listaTag(message.tagId, tags)}
-  </div>
-</div>);
+const listTag = (tagId, tags) => tagId.map(id => {
+  let selectedTag = tags.find(tag => id === tag.id);
+  return (<Tag tag={selectedTag} />);
+});
+
+const findTag = (text, tags) => {
+  let newText;
+  const words = text.split(' ');
+  words.map(word => {
+    tags.find(tag => {
+      if (tag.name === word) {
+
+        newText = text.split(word)
+          .reduce((prev, current, i) => {
+            if (!i) {
+              return [current];
+            }
+            return prev.concat(<Tag tag={tag} />, current);
+          }, [])
+
+
+      }
+    });
+  });
+  return newText ? newText : text;
+};
+
+const Message = ({ message, tags }) => (
+  <div className="message-box">
+    <User user={message.author} />: {findTag(message.text, tags)}
+    <div className="message-tags">
+      {listTag(message.tagId, tags)}
+    </div>
+  </div>);
 
 export default Message;
